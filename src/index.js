@@ -15,9 +15,9 @@ const Questions = () => {
   }
   return (
     <View>
-      {data.questions.map((item, i) => (
+      {data.questions.map((item) => (
         <TouchableOpacity style={styles.items} onPress={() => navigate('Detail', { id: item.id })}>
-          <Text key={i} style={styles.text}>{item.text}</Text>
+          <Text key={item.id} style={styles.text}>{item.text}</Text>
           <TouchableOpacity><Ionicons name="close" size={24} color="red" /></TouchableOpacity>
         </TouchableOpacity>
       ))}

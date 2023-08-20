@@ -44,3 +44,20 @@ export const ADD_NEW_ANSWER = gql`
   mutation myMutation($option_id :Int!){
     insert_answers_one(object:{option_id:$option_id}){id}
   }`;
+
+
+export const GET_ANSWERS_QUERY = gql`
+  subscription MySubscription($id:Int!) {
+    questions_by_pk(id: $id) {
+      options {
+        id
+        text
+        answers_aggregate {
+          aggregate {
+            count
+         }
+        }
+      }
+    }
+  }`
+  ;

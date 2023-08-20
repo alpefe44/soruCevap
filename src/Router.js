@@ -13,7 +13,7 @@ function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={{
+        <Stack.Screen name="Questions" component={Home} options={{
           headerTitleAlign: 'center', headerStyle: { backgroundColor: '#458a00' },
         }} />
         <Stack.Screen name="Detail" component={Detail} options={{
