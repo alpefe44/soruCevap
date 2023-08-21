@@ -17,9 +17,9 @@ const Item = ({ item, total }) => {
       <Heading style={{ paddingVertical: 15 }}>
         {item.text}
       </Heading>
-      <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', borderWidth: 2, padding: 4, borderColor: 'gray', borderRadius: 10, flexWrap: 'wrap' }}>
+      <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', borderWidth: 2, padding: 5, borderColor: 'gray', borderRadius: 10, flexWrap: 'wrap' , width:'100%' }}>
         <Text style={{ fontWeight: 'bold' }} >{yuzde}</Text>
-        <Progress width={width - 75} value={yuzde} my={4}></Progress>
+        <Progress colorScheme={'green'} width={width - 85} value={yuzde} my={4}></Progress>
       </View>
     </View>
   )

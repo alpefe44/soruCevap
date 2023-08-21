@@ -45,6 +45,7 @@ const AddNewModal = ({ value, setVal, closeModal }) => {
       placement: 'top',
       status: 'success'
     })
+    setVal([]);
   }
 
 
