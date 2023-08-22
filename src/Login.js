@@ -4,13 +4,16 @@ import { Heading, Input, Box, Button } from 'native-base'
 import LottieView from 'lottie-react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { register } from './auth';
-
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
 
+  const { navigate } = useNavigation();
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
 
   const handleSubmit = () => {
     register(email, password);
@@ -62,7 +65,7 @@ const Login = () => {
         <Button disabled={!email || !password} colorScheme={'green'} w={100} p={3} size='md' mr={1} onPress={handleSubmit}>
           Login
         </Button>
-        <Button colorScheme={'light'} w={100} p={3} size='md' onPress={() => console.log("hello world")}>
+        <Button colorScheme={'light'} w={100} p={3} size='md' onPress={() => navigate('Register') }>
           Sign Up
         </Button>
       </View>
