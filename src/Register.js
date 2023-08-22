@@ -3,11 +3,16 @@ import React, { useState } from 'react'
 import LottieView from 'lottie-react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Heading, Input, Box, Button } from 'native-base'
+import { register } from './auth';
 
 const Register = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmit = () => {
+    register(email, password);
+  }
   return (
     <View>
       <View style={{ padding: 15 }}>
@@ -46,11 +51,8 @@ const Register = () => {
           ></Input>
         </View>
         <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 15 }}>
-          <Button disabled={!email || !password} colorScheme={'green'} w={100} p={3} size='md' mr={1}>
-            Login
-          </Button>
-          <Button colorScheme={'light'} w={100} p={3} size='md'>
-            Sign Up
+          <Button disabled={!email || !password} colorScheme={'green'} w={100} p={3} size='md' mr={1} onPress={handleSubmit}>
+            Register
           </Button>
         </View>
 

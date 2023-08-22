@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Heading, Input, Box, Button } from 'native-base'
 import LottieView from 'lottie-react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { register } from './auth';
+import { login, register } from './auth';
 import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
@@ -14,9 +14,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
 
-
   const handleSubmit = () => {
-    register(email, password);
+    login(email, password);
   }
 
   return (
