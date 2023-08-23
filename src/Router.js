@@ -1,11 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-
 //pages
 import Home from '../src/Home/index'
-import { TouchableOpacity } from 'react-native';
 import Detail from './Detail';
 import Login from './Login';
 import Register from './Register';
