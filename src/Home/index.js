@@ -1,9 +1,10 @@
 import { View, Text, Modal, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Questions from '../index';
-import { Button1, Button2 } from '../components/Button';
+import { Button1, Button2 , Button3 } from '../components/Button';
 import AddNewModal from '../AddNewModal';
 import { ScrollView } from 'native-base';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 
@@ -17,7 +18,10 @@ const Home = ({ navigation }) => {
     navigation.setOptions({
       headerRight: () => (
         <Button1 onPress={() => setModalVisible((prev) => !prev)}></Button1 >
-      )
+      ),
+      headerLeft: () => (
+        <Button3 onPress={() => navigation.navigate('Profile')}></Button3 >
+      ),
     })
   }, [navigation])
 

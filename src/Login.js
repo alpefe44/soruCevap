@@ -1,21 +1,30 @@
 import { Pressable, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Heading, Input, Box, Button } from 'native-base'
 import LottieView from 'lottie-react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { login, register } from './auth';
+import { auth, login, register } from './auth';
 import { useNavigation } from '@react-navigation/native';
 
-const Login = () => {
+const Login = ({ navigation }) => {
 
   const { navigate } = useNavigation();
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log("navigate")
+        navigate('Questions')
+      }
+    });
+    return unsubscribe;
+  }, [])
 
-  const handleSubmit = () => {
-    login(email, password);
+  const handleSubmit = async () => {
+    login(email, password); // Kullanıcı giriş işlemi
   }
 
   return (
@@ -64,7 +73,7 @@ const Login = () => {
         <Button disabled={!email || !password} colorScheme={'green'} w={100} p={3} size='md' mr={1} onPress={handleSubmit}>
           Login
         </Button>
-        <Button colorScheme={'light'} w={100} p={3} size='md' onPress={() => navigate('Register') }>
+        <Button colorScheme={'light'} w={100} p={3} size='md' onPress={() => navigate('Register')}>
           Sign Up
         </Button>
       </View>

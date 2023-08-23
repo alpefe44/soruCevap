@@ -18,5 +18,13 @@ export const Button2 = ({ onPress }) => {
   )
 }
 
+export const Button3 = ({onPress}) => {
+  return(
+    <TouchableOpacity onPress={onPress}>
+      <Ionicons name="ios-person-circle-outline" size={32} color="black" />
+    </TouchableOpacity>
+  )
+}
+
 
 

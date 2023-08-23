@@ -15,7 +15,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 
@@ -28,32 +27,19 @@ export const register = async (email, password) => {
   }
 }
 
-export const logout = async () => {
-  try {
-    const a = await signOut(auth)
-  } catch (error) {
-    console.log('Kullanıcı oturumu kapattı')
-  }
-}
-
 export const login = async (email, password) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
+    console.log("LOG IN ", user)
     return user
-    console.log("LOG IN " , user)
+
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log(errorMessage)
   }
 }
 
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("USER", auth.currentUser)
-  } else {
-    console.log("Kullanıcı oturumu kapattı")
-  }
-})
 
 export { auth };
