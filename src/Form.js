@@ -4,6 +4,7 @@ import { ADD_NEW_ANSWER } from './Query';
 import Anitamion from './Anitamion';
 import { useMutation } from '@apollo/client';
 import { Button } from 'native-base';
+import { auth } from './auth';
 
 const Form = ({ options , setIsVoted}) => {
 
@@ -21,7 +22,8 @@ const Form = ({ options , setIsVoted}) => {
     }
     await addNewAnswer({
       variables: {
-        option_id: selectedItems[0]
+        option_id: selectedItems[0],
+        user_id : auth.currentUser.uid
       }
     })
     alert("OK");

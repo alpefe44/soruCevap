@@ -41,8 +41,8 @@ export const GET_BY_ID = gql`
 
 
 export const ADD_NEW_ANSWER = gql`
-  mutation myMutation($option_id :Int!){
-    insert_answers_one(object:{option_id:$option_id}){id}
+  mutation myMutation($option_id :Int! , $user_id:String!){
+    insert_answers_one(object:{option_id:$option_id , user_id:$user_id}){id}
   }`;
 
 
