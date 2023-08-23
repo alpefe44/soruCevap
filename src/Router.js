@@ -26,9 +26,12 @@ function Router() {
         <Stack.Screen name="Detail" component={Detail} options={{
           headerTitleAlign: 'center', headerStyle: { backgroundColor: '#458a00' },
         }}></Stack.Screen>
-
-        <Stack.Screen name='Register' component={Register}></Stack.Screen>
-        <Stack.Screen name = 'Profile' component={Profile}></Stack.Screen>
+        <Stack.Screen name='Register' component={Register} options={{
+          headerTitleAlign: 'center', headerStyle: { backgroundColor: '#458a00' }
+        }}></Stack.Screen>
+        <Stack.Screen name='Profile' component={Profile} options={{
+          headerTitleAlign: 'center', headerStyle: { backgroundColor: '#458a00' }
+        }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

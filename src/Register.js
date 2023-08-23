@@ -46,6 +46,7 @@ const Register = () => {
             variant="underlined"
             fontSize={20}
             borderColor='#686565'
+            type='password'
             value={password}
             onChangeText={setPassword}
           ></Input>
