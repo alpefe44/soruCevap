@@ -17,7 +17,8 @@ const Detail = ({ route }) => {
     variables: {
       id,
       user_id : auth.currentUser.uid
-    }
+    },
+    fetchPolicy:'network-only'
   });
 
   if (loading) {
