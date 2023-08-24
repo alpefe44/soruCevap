@@ -3,6 +3,7 @@ import { Box, Heading, Input, Button, useToast } from 'native-base'
 import { useMutation } from '@apollo/client';
 import { ADD_NEW_QUESTION_MUTATION } from '../src/Query'
 import { Dimensions } from 'react-native';
+import { auth } from './auth';
 
 const AddNewModal = ({ value, setVal, closeModal }) => {
 
@@ -35,7 +36,8 @@ const AddNewModal = ({ value, setVal, closeModal }) => {
     const result = await addNewQuestion({
       variables: {
         title: question,
-        options: option_data
+        options: option_data,
+        user_id:auth.currentUser.uid
       }
     })
     console.log(result.options + "soru eklendi")

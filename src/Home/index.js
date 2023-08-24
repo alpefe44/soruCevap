@@ -1,18 +1,21 @@
 import { View, Text, Modal, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Questions from '../index';
-import { Button1, Button2 , Button3 } from '../components/Button';
+import { Button1, Button2, Button3 } from '../components/Button';
 import AddNewModal from '../AddNewModal';
-import { ScrollView } from 'native-base';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { useSubscription } from '@apollo/client'
+import Anitamion from '../Anitamion';
+import { GET_QUESTIONS_QUERY } from '../Query';
 
 
 const Home = ({ navigation }) => {
 
+
   const [modalVisible, setModalVisible] = useState(false)
   const [options, setOptions] = useState([{ text: '' }, { text: '' }])
 
+  const { loading, data } = useSubscription(GET_QUESTIONS_QUERY);
+  
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -25,9 +28,16 @@ const Home = ({ navigation }) => {
     })
   }, [navigation])
 
+  if (loading) {
+    return <Anitamion></Anitamion>
+  }
+
+
+
+
   return (
     <View>
-      <Questions></Questions>
+      <Questions data={data.questions}></Questions>
       <Modal
         animationType="slide"
         visible={modalVisible}
@@ -37,6 +47,7 @@ const Home = ({ navigation }) => {
       </Modal>
     </View>
   )
+
 }
 
 export default Home

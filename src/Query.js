@@ -6,6 +6,7 @@ export const GET_QUESTIONS_QUERY = gql`
     questions(order_by:{created_at:desc}){
       id
       text
+      user_id
     }
   }
 `;
@@ -13,10 +14,11 @@ export const GET_QUESTIONS_QUERY = gql`
 
 
 export const ADD_NEW_QUESTION_MUTATION = gql`
-  mutation addNewQuestionMutation($title :String! , $options :[options_insert_input]!){
+  mutation addNewQuestionMutation($title :String! , $options :[options_insert_input]! , $user_id:String!){
     insert_questions_one(
       object: {
         text:$title,
+        user_id:$user_id
         options: {
           data:$options
         }
@@ -67,3 +69,12 @@ export const GET_ANSWERS_QUERY = gql`
     }
   }`
   ;
+
+
+export const DELETE_BY_QUESTION = gql`
+  mutation deleteQuestion($id:Int!){
+    delete_questions_by_pk(id: $id) {
+      id
+    }
+}
+`;
