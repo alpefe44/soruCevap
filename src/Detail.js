@@ -6,6 +6,7 @@ import Anitamion from './Anitamion';
 import { Heading } from 'native-base';
 import Form from './Form';
 import Result from './Result';
+import { auth } from './auth';
 
 const Detail = ({ route }) => {
 
@@ -15,6 +16,7 @@ const Detail = ({ route }) => {
   const { loading, data } = useQuery(GET_BY_ID, {
     variables: {
       id,
+      user_id : auth.currentUser.uid
     }
   });
 
@@ -22,13 +24,14 @@ const Detail = ({ route }) => {
     return <Anitamion></Anitamion>
   }
 
-  const { text, options } = data.questions_by_pk;
-
+  console.log(data)
+  const { text, options , answers } = data.questions_by_pk;
+  
   return (
     <View style={styles.container}>
       <Heading>{text}</Heading>
       {
-        !isVoted ? <Form setIsVoted={setIsVoted} options={options}></Form> : <Result id={id}></Result>
+        !isVoted && answers.length < 1 ? <Form setIsVoted={setIsVoted} id={id} options={options}></Form> : <Result id={id}></Result>
       }
 
     </View>

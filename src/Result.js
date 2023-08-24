@@ -3,7 +3,6 @@ import React from 'react'
 import { GET_ANSWERS_QUERY } from './Query';
 import { useSubscription } from '@apollo/client';
 import Anitamion from './Anitamion';
-import { Heading } from 'native-base';
 import Item from './components/Item';
 
 const Result = ({ id }) => {

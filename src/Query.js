@@ -11,6 +11,7 @@ export const GET_QUESTIONS_QUERY = gql`
 `;
 
 
+
 export const ADD_NEW_QUESTION_MUTATION = gql`
   mutation addNewQuestionMutation($title :String! , $options :[options_insert_input]!){
     insert_questions_one(
@@ -28,21 +29,26 @@ export const ADD_NEW_QUESTION_MUTATION = gql`
 
 
 export const GET_BY_ID = gql`
-  query DetailQuery($id :Int!) {
-    questions_by_pk(id: $id){
+query DetailQuery($id: Int! , $user_id : String!) {
+  questions_by_pk(id: $id) {
+    id
+    text
+    answers(limit: 1, where: {user_id: {_eq: $user_id}}){
+      id
+      user_id
+    }
+    options{
       id
       text
-      options {
-        id
-        text
-      }
     }
-  }`;
+  }
+}
+`;
 
 
 export const ADD_NEW_ANSWER = gql`
-  mutation myMutation($option_id :Int! , $user_id:String!){
-    insert_answers_one(object:{option_id:$option_id , user_id:$user_id}){id}
+  mutation myMutation($option_id :Int! , $user_id:String! , $question_id : Int!){
+    insert_answers_one(object:{option_id:$option_id , user_id:$user_id , question_id : $question_id }){id}
   }`;
 
 

@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client';
 import { Button } from 'native-base';
 import { auth } from './auth';
 
-const Form = ({ options , setIsVoted}) => {
+const Form = ({ options, setIsVoted, id }) => {
 
   const [addNewAnswer, { error, loading }] = useMutation(ADD_NEW_ANSWER);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -23,7 +23,8 @@ const Form = ({ options , setIsVoted}) => {
     await addNewAnswer({
       variables: {
         option_id: selectedItems[0],
-        user_id : auth.currentUser.uid
+        user_id: auth.currentUser.uid,
+        question_id : id
       }
     })
     alert("OK");
